@@ -3,7 +3,7 @@
 ***一个基于Mirai 2.7.0的机器人插件，用以检测java版minecraft服务器在线情况，检测java版minecraft更新情况***
 
 ## 使用说明
-* **插件项目地址 [github项目地址](https://github.com/Ycituss/MinecraftPing)**
+* **插件项目地址 [github项目地址](https://github.com/Ycituss/MinecraftPing) [gitee项目地址](https://gitee.com/ycycycc123/MinecraftPing)**
 * **插件基于[Mirai Clonsole](https://github.com/mamoe/mirai-clonsole) 2.7.0版本开发，请使用Mirai-Clonsole 2.7.0及以上版本使用本插件**
 * **插件中服务器信息获取使用的是[MX233](https://github.com/MX233) 大佬的代码[MinecraftServerPing](https://github.com/MX233/MinecraftServerPing)**
 * **使用时将`xxx.mirai.jar`文件放入plugins文件夹，重启Mirai**
