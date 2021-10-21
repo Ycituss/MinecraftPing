@@ -5,7 +5,8 @@
 ## 使用说明
 * **插件项目地址 [github项目地址](https://github.com/Ycituss/MinecraftPing)**
 * **插件基于[Mirai Clonsole](https://github.com/mamoe/mirai-clonsole) 2.7.0版本开发，请使用Mirai-Clonsole 2.7.0及以上版本使用本插件**
-* **使用时将`.mirai.jar`文件放入plugins文件夹，重启Mirai**
+* **插件中服务器信息获取使用的是[MX233](https://github.com/MX233) 大佬的代码[MinecraftServerPing](https://github.com/MX233/MinecraftServerPing)**
+* **使用时将`xxx.mirai.jar`文件放入plugins文件夹，重启Mirai**
 * **配置文件位于`config\MinecraftPing\ `文件夹中**
 * **第一次用在配置文件里手动更改botAdministrators项，改为自己的QQ号**
 * **请选择适合自己系统的`phantomjs`放入 `data\MinecraftPing\ ` 文件夹中(下载地址为 [Download PhantomJS](https://phantomjs.org/download.html), Windows系统文件名为`phantomjs.exe`, linux系统文件名为`phantomjs`)**
