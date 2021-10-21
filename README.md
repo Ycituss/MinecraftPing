@@ -28,7 +28,6 @@
 >---|---
 > mcping|当前群绑定服务器状态
 > mcping `服务器地址`|指定服务器状态
-> mcplayer|当日服务器玩家在线状态
 > mcversion|当前最新java版minecraft版本
 > mcversionjpg|当前最新java版minecraft版本更新日志
 
@@ -38,4 +37,5 @@
 
 >指令|说明
 >---|---
+> mcplayer|当日服务器玩家在线状态
 > setCheckMcping `true`/`false`|是否开启服务器状态监测
