@@ -22,6 +22,10 @@ public class checkStatus_Timer extends checkTimer {
 	private static int status = 6;
 	private static int lastHour = 0;
 
+	public int getStatus() {
+		return status;
+	}
+
 	public checkStatus_Timer(String timerName, long firstTime, long delayTime) {
 		super(timerName, firstTime, delayTime);
 	}
@@ -57,7 +61,7 @@ public class checkStatus_Timer extends checkTimer {
 			LoggerManager.logDebug("playerStatus", "playerDate save successfully!", true);
 		}
 
-		if (!FileManager.applicationConfig_File.getSpecificDataInstance().Server.isCheckStatus) return;
+//		if (!FileManager.applicationConfig_File.getSpecificDataInstance().Server.isCheckStatus) return;
 
 		if (nowHour == FileManager.applicationConfig_File.getSpecificDataInstance().TimeSet.sentence_hour &&
 				nowMinute == FileManager.applicationConfig_File.getSpecificDataInstance().TimeSet.sentence_min) {
@@ -152,8 +156,10 @@ public class checkStatus_Timer extends checkTimer {
 				sendMessage = sendMessage + "[ 地址 ] " + host + "\n" + "[ 状态 ] " + "\uD83D\uDD34\n";
 
 				//提醒管理人员服务器发生故障
-				MessageManager.sendMessageBySituation(264343654L, 1390435486L, sendMessage);
-				MessageManager.sendMessageBySituation(966348161L, 2799282971L, sendMessage);
+				if (FileManager.applicationConfig_File.getSpecificDataInstance().Server.isCheckStatus) {
+					MessageManager.sendMessageBySituation(264343654L, 1390435486L, sendMessage);
+					MessageManager.sendMessageBySituation(966348161L, 2799282971L, sendMessage);
+				}
 				lastHour = nowHour;
 			}
 		}

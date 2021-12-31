@@ -17,7 +17,7 @@ public final class MinecraftPing extends JavaPlugin {
     private static boolean pluginLoaded = false;
     public static RobotCommandManager commandManager = null;
     private static Bot CURRENT_BOT = null;
-    private static String version = "1.0";
+    private static String version = "1.1";
 
 
     public static MinecraftPing getInstance() { return INSTANCE;  }
@@ -34,7 +34,7 @@ public final class MinecraftPing extends JavaPlugin {
         return commandManager;
     }
     private MinecraftPing() {
-        super(new JvmPluginDescriptionBuilder("com.ycitus.MinecraftPing", "1.0-SNAPSHOT")
+        super(new JvmPluginDescriptionBuilder("com.ycitus.MinecraftPing", "1.1")
                 .name("MinecraftPing")
                 .author("Ycitus")
                 .build());

@@ -5,6 +5,7 @@ import com.ycitus.mcping.command.RobotCommandChatType;
 import com.ycitus.mcping.command.RobotCommandUser;
 import com.ycitus.mcping.files.FileManager;
 import com.ycitus.mcping.framework.MessageManager;
+import com.ycitus.mcping.timer.timers.checkStatus_Timer;
 import net.mamoe.mirai.message.data.MessageChain;
 
 import java.util.*;
@@ -28,6 +29,11 @@ public class McPlayerCommand extends RobotCommand {
         String sendMsg = "";
         HashMap<String, Integer> map = FileManager.applicationConfig_File.getSpecificDataInstance()
                 .PlayerDate.PlayerTimeNow;
+
+        if (checkStatus_Timer.getInstance().getStatus() < 5) {
+            sendMsg = "服务器离线，无法检测。";
+            MessageManager.sendMessageToQQGroup(fromGroup, sendMsg);
+        }
 
         if (map.isEmpty()) {
             sendMsg = sendMsg + "今天没有人上线(ŎдŎ；)";
