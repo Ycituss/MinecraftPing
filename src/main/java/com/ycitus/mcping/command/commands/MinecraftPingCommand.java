@@ -6,6 +6,7 @@ import com.ycitus.mcping.command.RobotCommandChatType;
 import com.ycitus.mcping.command.RobotCommandUser;
 import com.ycitus.mcping.files.FileManager;
 import com.ycitus.mcping.framework.MessageManager;
+import com.ycitus.mcping.utils.BotList;
 import com.ycitus.mcping.utils.FileUtil;
 import com.ycitus.mcping.minecraftserverping.MCPing;
 import com.ycitus.mcping.minecraftserverping.Util;
@@ -112,17 +113,24 @@ public class MinecraftPingCommand extends RobotCommand {
             }
         }
 
+        List<String> botList = BotList.getBotList(playerlist);
         sendMessage = sendMessage + "[ 地址 ] " + host + "\n"
                 + "[ 状态 ] " + "\uD83D\uDFE2\n"
                 + "[ 描述 ] " +ping.getDescription() + "\n"
                 + "[ 版本 ] " + ping.getVersion_name() + "\n"
-                + "[ 人数 ] " + ping.getOnline_players() + "/" + ping.getMax_players() + "\n";
-        if (playerlist.size() > 0){
-            sendMessage += "[ 在线玩家 ] ";
-            for (String player : playerlist) {
-                sendMessage = sendMessage + player + ",";
+                + "[ 人数 ] " + (ping.getOnline_players() - botList.size()) + "/" + ping.getMax_players() + "\n";
+        if (botList.size() > 0 ){
+            sendMessage += "[ 在线bot ] ";
+            for (String bot : botList) {
+                sendMessage = sendMessage + bot + ",";
             }
         }
+//        if (playerlist.size() > 0){
+//            sendMessage += "[ 在线玩家 ] ";
+//            for (String player : playerlist) {
+//                sendMessage = sendMessage + player + ",";
+//            }
+//        }
         sendMessage = sendMessage.substring(0, sendMessage.length() - 1);
         MessageManager.sendMessageToQQGroup(fromGroup, sendMessage);
     }

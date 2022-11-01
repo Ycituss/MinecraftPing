@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.ycitus"
-version = "1.1"
+version = "1.3"
 
 repositories {
     maven("https://maven.aliyun.com/repository/public")

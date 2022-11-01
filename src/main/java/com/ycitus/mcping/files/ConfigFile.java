@@ -17,7 +17,7 @@ public class ConfigFile {
         String result = null;
 
         result = FileUtil.getJavaRunPath();
-        result = result + "config" + File.separator + "com.ycitus.MinecraftPing" + File.separator;
+        result = result + "config" + File.separator + "MinecraftPing" + File.separator;
 
         return result;
     }
