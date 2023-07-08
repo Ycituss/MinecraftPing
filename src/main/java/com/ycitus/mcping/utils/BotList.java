@@ -13,4 +13,14 @@ public class BotList {
         }
         return botList;
     }
+
+    public static List<String> getPalyerList(List<String> playerList){
+        List<String> botList = new ArrayList<>();
+        for (String player : playerList){
+            if (!player.contains("bot")){
+                botList.add(player);
+            }
+        }
+        return botList;
+    }
 }

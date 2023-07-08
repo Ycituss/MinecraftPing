@@ -18,9 +18,12 @@ public class RobotCommandManager {
 		commands.add(new RebotCommand("mcpingRebot"));
 		commands.add(new MinecraftPingCommand("mcping.*"));
 		commands.add(new serverSetCommand("serverset.*"));
+		commands.add(new ServerListCommand("serverlist"));
+		commands.add(new PortSetCommand("portset.*"));
 		commands.add(new IsCheckStatusCommand("setCheckMcping.*"));
 		commands.add(new IsCheckVersionCommand("setCheckVersion.*"));
 		commands.add(new IsShowFaviconCommand("setShowFavicon.*"));
+		commands.add(new IsShowPlayerCommand("setShowPlayer.*"));
 		commands.add(new McPlayerCommand("mcplayer"));
 		commands.add(new McVersionCommand("mcversion.*"));
 		commands.add(new TestCommand("mctest.*"));

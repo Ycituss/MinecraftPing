@@ -23,7 +23,7 @@ public class ApplicationConfig_Data {
 
 	public Server Server = new Server();
 	public class Server {
-		public HashMap<Long, String> serverList = new HashMap<Long, String>() {
+		public HashMap<Long, HashMap<Integer, ArrayList<String>>> serverList = new HashMap<Long, HashMap<Integer, ArrayList<String>>>() {
 			{
 			}
 		};
@@ -34,6 +34,8 @@ public class ApplicationConfig_Data {
 		public boolean isShowFavicon = true;
 		public boolean isCheckVersion = false;
 		public boolean isRelease = false;
+		public boolean isShowPlayer = false;
+		public int defaultPort = 39511;
 		public String SnapshotVersion = "21w42a";
 		public String SnapshotVersionUrl = "https://www.minecraft.net/zh-hans/article/minecraft-snapshot-21w42a";
 		public String ReleaseVersion = "1.17.1";

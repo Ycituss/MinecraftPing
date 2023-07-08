@@ -9,6 +9,7 @@ import com.ycitus.mcping.utils.McVersion;
 import net.mamoe.mirai.contact.ContactList;
 import net.mamoe.mirai.contact.Group;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class checkVersion_Timer extends checkTimer{
@@ -51,7 +52,7 @@ public class checkVersion_Timer extends checkTimer{
                 msg = msg + "\n" + mcVersion.getSnapshotVersion();
                 msg = msg + "\n详细信息请查看" + mcVersion.getSnapshotVersionUrl();
 
-                HashMap<Long, String> serverList = FileManager.applicationConfig_File
+                HashMap<Long, HashMap<Integer, ArrayList<String>>> serverList = FileManager.applicationConfig_File
                         .getSpecificDataInstance().Server.serverList;
                 ContactList<Group> groups = BotManager.getAllQQGroups();
                 for (Group group : groups) {
@@ -72,7 +73,7 @@ public class checkVersion_Timer extends checkTimer{
                 msg = msg + "\n当前Java版minecraft最新版本为: " + mcVersion.getReleaseVersion();
                 msg = msg + "\n详细信息请查看" + mcVersion.getReleaseVersionUrl();
 
-                HashMap<Long, String> serverList = FileManager.applicationConfig_File
+                HashMap<Long, HashMap<Integer, ArrayList<String>>> serverList = FileManager.applicationConfig_File
                         .getSpecificDataInstance().Server.serverList;
                 ContactList<Group> groups = BotManager.getAllQQGroups();
                 for (Group group : groups) {

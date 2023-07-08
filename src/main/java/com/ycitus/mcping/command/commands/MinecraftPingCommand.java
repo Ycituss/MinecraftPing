@@ -19,6 +19,7 @@ import net.mamoe.mirai.utils.ExternalResource;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,26 +44,34 @@ public class MinecraftPingCommand extends RobotCommand {
         MCPing ping = null;
 
         String sendMessage = new String();
-
+        int port = FileManager.applicationConfig_File.getSpecificDataInstance().Server.defaultPort;
         String path = FileUtil.getJavaRunPath() + "data" + File.separator + "MinecraftPing" + File.separator;
         if (!new File(path).exists()) new File(path).mkdirs();
 
         if (strings.length >= 2){
             host = strings[1];
+            if (strings.length >= 3) port = Integer.valueOf(strings[2]);
         }else {
-            HashMap<Long, String> serverList = FileManager.applicationConfig_File
+            int listNum = 0;
+            if (!strings[0].replaceAll("mcping", "").isEmpty()) {
+                listNum = Integer.valueOf(strings[0].replaceAll("mcping", ""));
+            }
+            HashMap<Long, HashMap<Integer, ArrayList<String>>> serverList = FileManager.applicationConfig_File
                     .getSpecificDataInstance().Server.serverList;
             if (!serverList.containsKey(fromGroup)){
                 MessageManager.sendMessageBySituation(fromGroup, fromQQ, "当前群未绑定服务器");
                 return;
             }
+            if (!serverList.get(fromGroup).containsKey(listNum)){
+                MessageManager.sendMessageBySituation(fromGroup, fromQQ, "不存在的服务器编号");
+                return;
+            }
 
-            host = serverList.get(fromGroup);
+            host = serverList.get(fromGroup).get(listNum).get(0);
         }
 
         File saveSrc = new File(path + host + ".png");
 
-        int port = 25565;
         Srv srv = Srv.getSrv(host,Mc.MC_SRV);
         if (srv != null) {
             host = srv.getSrvHost();
@@ -119,18 +128,22 @@ public class MinecraftPingCommand extends RobotCommand {
                 + "[ 描述 ] " +ping.getDescription() + "\n"
                 + "[ 版本 ] " + ping.getVersion_name() + "\n"
                 + "[ 人数 ] " + (ping.getOnline_players() - botList.size()) + "/" + ping.getMax_players() + "\n";
+        if (FileManager.applicationConfig_File.getSpecificDataInstance().Server.isShowPlayer) {
+            if (BotList.getPalyerList(playerlist).size() > 0){
+                sendMessage += "[ 在线玩家 ] ";
+                for (String player : BotList.getPalyerList(playerlist)) {
+                    sendMessage = sendMessage + player + ",";
+                }
+            }
+            sendMessage = sendMessage.substring(0, sendMessage.length() - 1);
+            sendMessage += "\n";
+        }
         if (botList.size() > 0 ){
             sendMessage += "[ 在线bot ] ";
             for (String bot : botList) {
                 sendMessage = sendMessage + bot + ",";
             }
         }
-//        if (playerlist.size() > 0){
-//            sendMessage += "[ 在线玩家 ] ";
-//            for (String player : playerlist) {
-//                sendMessage = sendMessage + player + ",";
-//            }
-//        }
         sendMessage = sendMessage.substring(0, sendMessage.length() - 1);
         MessageManager.sendMessageToQQGroup(fromGroup, sendMessage);
     }
